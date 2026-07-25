@@ -2,7 +2,6 @@
 
 import { currentUser } from "@clerk/nextjs/server";
 import { prisma } from "@/lib/db";
-import type { User } from "@/lib/generated/prisma/client";
 
 /**
  * Syncs the signed-in Clerk user into the local Prisma `User` table (upsert).
@@ -18,20 +17,23 @@ export async function onBoard() {
     }
 
     const email = clerkUser.emailAddresses[0]?.emailAddress ?? null;
+    if (!email) {
+        throw new Error("Clerk user is missing an email address")
+    }
+
+    const name = clerkUser.fullName ?? ([clerkUser.firstName, clerkUser.lastName].filter(Boolean).join(" ") || null);
 
     return prisma.user.upsert({
         where: { clerkId: clerkUser.id },
         create: {
             clerkId: clerkUser.id,
             email,
-            firstName: clerkUser.firstName,
-            lastName: clerkUser.lastName,
+            name,
             imageUrl: clerkUser.imageUrl
         },
         update: {
             email,
-            firstName: clerkUser.firstName,
-            lastName: clerkUser.lastName,
+            name,
             imageUrl: clerkUser.imageUrl
         }
     })

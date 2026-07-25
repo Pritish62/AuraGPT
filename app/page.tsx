@@ -1,14 +1,20 @@
 import { UserButton } from "@clerk/nextjs";
-import Image from "next/image";
+import { currentUser } from "@clerk/nextjs/server";
 
-export default function Home() {
+import { onBoard } from "@/features/auth/action/onboard";
+
+export default async function Home() {
+  const clerkUser = await currentUser();
+
+  if (clerkUser) {
+    await onBoard();
+  }
+
   return (
     <div>
-<div>hello world</div>
-<UserButton></UserButton>
+      <div>hello world</div>
+      <UserButton />
     </div>
-   
-
   );
 }
 

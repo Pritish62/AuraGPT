@@ -11,9 +11,7 @@ const RootGrouplayout = async ({ children }: { children: React.ReactNode }) => {
     await onBoard();
 
     return (
-
-        { children }
-
+        <>{children}</>
     )
 }
 
