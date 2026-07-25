@@ -1,7 +1,7 @@
 import { UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 
-import { onBoard } from "@/features/auth/action/onboard";
+import { onBoard } from "@/modules/auth/action/onboard";
 
 export default async function Home() {
   const clerkUser = await currentUser();

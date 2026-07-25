@@ -1,4 +1,4 @@
-import { onBoard } from '@/features/auth/action/onboard';
+import { onBoard } from '@/modules/auth/action/onboard';
 import { auth } from '@clerk/nextjs/server'
 import React from 'react'
 
