@@ -44,3 +44,5 @@ next-env.d.ts
 .agents
 .claude
 .windsurf
+# clerk configuration (can include secrets)
+/.clerk/

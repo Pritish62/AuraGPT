@@ -1,3 +1,4 @@
+import {ClerkProvider} from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Outfit, Montserrat } from "next/font/google";
 import "./globals.css";
@@ -35,16 +36,18 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", outfit.variable, montserratHeading.variable)}
     >
       <body className="min-h-full flex flex-col">
-        <QueryProvider>
-        <ThemeProvider
+        <ClerkProvider>
+          <QueryProvider>
+          <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+          >
           {children}
-        </ThemeProvider>
-        </QueryProvider>
+          </ThemeProvider>
+          </QueryProvider>
+        </ClerkProvider>
       </body>
     </html>
   );
