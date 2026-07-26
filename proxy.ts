@@ -10,6 +10,7 @@ export default clerkMiddleware((auth, request) => {
   auth.protect();
 }, {
   signInUrl: "/sign-in",
+  signUpUrl: "/sign-up",
 });
 
 export const config = {
