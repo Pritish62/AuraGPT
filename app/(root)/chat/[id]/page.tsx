@@ -1,8 +1,13 @@
 import React from 'react'
 
-function page() {
+type  ConversationPageProps = {
+  params : Promise<{id : string}>
+}
+const page = async ({params} : ConversationPageProps) =>  {
+
+  const { id } = await params;
   return (
-    <div>this is chat page</div>
+    <div>this is chat page{id}</div>
   )
 }
 
