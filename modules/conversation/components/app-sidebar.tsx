@@ -57,7 +57,7 @@ export function AppSidebar() {
 // Get the active conversation id from the pathname (e.g. /c/123)
 // pathname.split("/")[2] is the third part of the pathname (the conversation id)
 //  firstparam = / , secondparam = c , thirdparam = 123
-  const activeId = pathname.startsWith("/c/")
+  const activeId = pathname.startsWith("/chat/")
     ? pathname.split("/")[2]
     : undefined;
 
@@ -74,7 +74,7 @@ export function AppSidebar() {
               <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-sm text-primary-foreground">
                 C
               </span>
-              <span>ChaiGPT</span>
+              <span>AuraGPT</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
