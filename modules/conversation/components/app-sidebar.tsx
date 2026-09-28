@@ -37,12 +37,12 @@ import {
 } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
-  useConversation,
+  useConversations,
 } from "../hooks/use-conversation";
 import { cn } from "@/lib/utils";
 
 type Conversation = NonNullable<
-  ReturnType<typeof useConversation>["conversationsQuery"]["data"]
+  ReturnType<typeof useConversations>["conversationsQuery"]["data"]
 >[number];
 
 /**
@@ -50,7 +50,7 @@ type Conversation = NonNullable<
  */
 export function AppSidebar() {
   const pathname = usePathname();
-  const { conversationsQuery } = useConversation();
+  const { conversationsQuery } = useConversations();
   const { data: conversations, isLoading } = conversationsQuery;
 
   
@@ -159,7 +159,7 @@ function ChatItem({
   isActive: boolean;
 }) {
   const { updateConversationMutation, deleteConversationMutation } =
-    useConversation();
+    useConversations();
 
   /** Prompts the user to rename the conversation and persists the new title. */
   function handleRename() {
