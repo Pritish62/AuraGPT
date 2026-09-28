@@ -13,7 +13,7 @@ import {
 } from "@/modules/conversation/action/conversation-action";
 import { queryKeys } from "@/modules/conversation/utils/query-keys";
 
-export function useConversation() {
+export function useConversations() {
 	const queryClient = useQueryClient();
 
 	const conversationsQuery = useQuery({
