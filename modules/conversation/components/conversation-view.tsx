@@ -24,7 +24,7 @@ export const conversationView = ({ conversationId, initialMessages }: conversati
     const conversations = conversationsQuery.data;
 
     const transport = useMemo(() => new DefaultChatTransport({
-        api: "api/chat",
+        api: "/api/chat",
         prepareSendMessagesRequest: ({ id, messages }) => ({
             body: {
                 id, message: messages.at(-1)
